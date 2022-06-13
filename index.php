@@ -22,18 +22,16 @@ class Movie
 
     public function ratepercentage()
     {
-        foreach ($this->rating as $rate) {
-            $ratepercentage = "$rate * 10" . "%";
-        }
+        $ratepercentage = $this->rating * 10 . "%";
         return $ratepercentage;
-    }
+    }  
 }
 
-$the_Godfather = new Movie("The Godfather", "dramatic", 9);
-$the_Godfather->ratepercentage($rate);
+$the_Godfather = new Movie("The Godfather", "dramatic", 9.2);
+$the_Godfather->ratepercentage();
 
-$saving_Private_Ryan = new Movie("Saving Private Ryan", "war movie", 8);
-$saving_Private_Ryan->ratepercentage($rate);
+$saving_Private_Ryan = new Movie("Saving Private Ryan", "war movie", 8.7);
+$saving_Private_Ryan->ratepercentage();
 
 $movieList = [];
 $movieList[] = $the_Godfather;
@@ -42,8 +40,9 @@ $movieList[] = $saving_Private_Ryan;
 
 <?php foreach ($movieList as $film) { ?>
     <div>
-        <h1> <?php echo $film->$title ?> </h1>
-        <h2> <?php echo $film->$genre ?> </h2>
-        <p>Utenti a cui è piaciuto: <?php echo $film->ratepercentage(); ?></p>
+        <h1> <?php echo "Titolo:" . " " . $film->title ?> </h1>
+        <h2> <?php echo "Genere:" . " " . $film->genre ?> </h2>
+        <h3> <?php echo "Rating:" . " " . $film->rating ?> </h3>
+        <p>Utenti a cui è piaciuto: <?php echo $film->ratepercentage() ?></p>
     </div>
 <?php } ?>
